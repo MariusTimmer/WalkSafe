@@ -1,0 +1,33 @@
+input,
+textarea {
+    width: 100%;
+}
+input[type=text],
+input[type=password],
+textarea {
+    border: none;
+    border-bottom: 1px solid gray;
+}
+input[type=submit] {
+    margin-top: 1em;
+}
+p {
+    text-align: justify;
+}
+label {
+  float: left;
+  width: 45%;
+}
+label.right {
+    text-align: right;
+    padding-right: .5em;
+}
+span.value {
+  color: gray;
+}
+a label {
+    float: none;
+}
+#mainmenu_links a * {
+    cursor: pointer;
+}
