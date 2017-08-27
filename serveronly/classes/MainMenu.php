@@ -38,7 +38,7 @@ class MainMenu extends Element {
     }
 
     public function __toString() {
-        $html  = '<nav class="w3-sidebar w3-bar-block w3-card" id="sidebar" style="display: none;">';
+        $html  = '<nav class="w3-sidebar w3-bar-block w3-card" id="sidebar">';
         $html .= '<div class="w3-container w3-theme-d2">';
         $html .= '<span onclick="$(\'nav#sidebar\').fadeOut(100);" class="w3-button w3-display-topright w3-large">X</span>';
         $html .= '<br /><div class="w3-padding w3-center">';
@@ -54,6 +54,7 @@ class MainMenu extends Element {
             $html .= '<a class="w3-bar-item w3-button" target="_self" href="'. $url .'">'. $innerHTML .'</a>';
         }
         $html .= '</div></nav>';
+        $html .= '<script type="text/javascript">document.getElementById("sidebar").style = "display: none";</script>';
         return $html;
     }
 
