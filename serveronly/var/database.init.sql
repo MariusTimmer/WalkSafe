@@ -33,12 +33,12 @@ CREATE TABLE verifications (
     CONSTRAINT uc_verifications_username UNIQUE (username)
 );
 
-,CREATE TABLE locations (
+CREATE TABLE locations (
     locationid SERIAL,
     name VARCHAR(64) NOT NULL,
-    longitude DOUBLE,
-    latitude DOUBLE,
-    altitude DOUBLE DEFAULT 0,
+    longitude REAL,
+    latitude REAL,
+    altitude REAL DEFAULT 0,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_locations PRIMARY KEY (locationid)
 );
