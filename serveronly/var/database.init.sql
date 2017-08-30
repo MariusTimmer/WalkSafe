@@ -22,6 +22,23 @@ CREATE TABLE profiles (
     CONSTRAINT fk_profiles_users FOREIGN KEY (userid) REFERENCES users(userid)
 );
 
+CREATE TABLE interests (
+    interestid SERIAL,
+    label VARCHAR(32) NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_interests PRIMARY KEY (interestid),
+    CONSTRAINT uc_interests_label UNIQUE (label)
+);
+
+CREATE TABLE profile_interests (
+    profileid INTEGER NOT NULL,
+    interestid INTEGER NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_profile_interests PRIMARY KEY (profileid, interestid),
+    CONSTRAINT fk_profile_interests_profiles FOREIGN KEY (profileid) REFERENCES profiles(profileid),
+    CONSTRAINT fk_profile_interests_interests FOREIGN KEY (interestid) REFERENCES interests(interestid)
+);
+
 CREATE TABLE verifications (
     verifyid VARCHAR(128) NOT NULL,
     username VARCHAR(32) NOT NULL,
