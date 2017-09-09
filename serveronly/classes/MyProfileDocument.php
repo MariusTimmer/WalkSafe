@@ -17,6 +17,7 @@ class MyProfileDocument extends MemberDocument {
     const POST_KEY_DOB = 'dob';
     const POST_KEY_SUBMIT = 'submit';
     protected $mode;
+    protected $profileobject;
 
     public function __construct() {
         parent::__construct(gettext("TITLE_MY_PROFILE"));
@@ -27,6 +28,59 @@ class MyProfileDocument extends MemberDocument {
         if (empty($this->mode)) {
             $this->mode = self::MODE_DEFAULT;
         }
+        $this->profileobject = new Profile();
+    }
+
+    protected function execute() {
+        if (($this->mode == self::MODE_SAVE) &&
+            (!empty($this->getValue(self::POST_KEY_SUBMIT)))) {
+            $firstname = $this->getValue(self::POST_KEY_FIRSTNAME);
+            $lastname = $this->getValue(self::POST_KEY_LASTNAME);
+            $dob = $this->getValue(self::POST_KEY_DOB);
+            switch ($this->getValue(self::POST_KEY_GENDER)) {
+                case GenderSelectionElement::GENDER_MALE:
+                    $gender = 1;
+                    break;
+                case GenderSelectionElement::GENDER_FEMALE:
+                    $gender = 0;
+                    break;
+                default:
+                    $gender = -1;
+            }
+            if (empty($firstname) || empty($lastname)) {
+                /**
+                 * We want to have the full name of our users so we do not
+                 * allow them to remove the first or last name. Keep in mind
+                 * that we do not know weather the given name is real or fake.
+                 */
+                $this->addContent(new TextElement(
+                    gettext("MESSAGE_FULLNAME_REQUIRED"),
+                    gettext("TITLE_MISSING_INFORMATION")
+                ));
+                return false;
+            }
+            $profiledata = array(
+                'userid' => SessionManager::getCurrentUserID(),
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'ismale' => $gender,
+                'dayofbirth' => $dob
+            );
+            $updatestatus = $this->profileobject->update($profiledata);
+            if ($updatestatus) {
+                $this->addContent(new TextElement(
+                    gettext("MESSAGE_PROFILEUPDATE_SUCCESS"),
+                    gettext("TITLE_PROFILEUPDATE_SUCCESS")
+                ));
+                return true;
+            } else {
+                $this->addContent(new TextElement(
+                    gettext("MESSAGE_PROFILEUPDATE_FAILURE"),
+                    gettext("TITLE_PROFILEUPDATE_FAILURE")
+                ));
+                return false;
+            }
+        }
     }
 
     /**
@@ -34,14 +88,13 @@ class MyProfileDocument extends MemberDocument {
      * ability to modify the profile data.
      */
     protected function setupHTML() {
-        $profileobject = new Profile();
-        $profile = $profileobject->getProfileByUserID(SessionManager::getCurrentUserID());
+        $profile = $this->profileobject->getProfileByUserID(SessionManager::getCurrentUserID());
         switch ($this->mode) {
             case self::MODE_CHANGE:
                 $this->buildProfileChangeForm($profile);
                 break;
             default:
-                $this->buildProfileView($profile, $profileobject);
+                $this->buildProfileView($profile);
         }
     }
 
@@ -86,8 +139,9 @@ class MyProfileDocument extends MemberDocument {
             self::POST_KEY_GENDER,
             $selection_gender
         );
+        $form_content .= new SubmitElement(self::POST_KEY_SUBMIT, gettext("APPLY_CHANGES"));
         $this->addContent(new FormElement(
-            '',
+            '?'. self::POST_KEY_MODE .'='. self::MODE_SAVE,
             $form_content
         ));
     }
@@ -95,9 +149,13 @@ class MyProfileDocument extends MemberDocument {
     /**
      * Provides the normal view of the profile data.
      * @param Profile $profile Profile data
-     * @param Profile $profileobject Profile class which will be used for the interests
      */
-    protected function buildProfileView($profile, $profileobject) {
+    protected function buildProfileView($profile) {
+        $this->addContent(
+            $this->addContent(new TextElement(
+                new LabelElement(gettext("LABEL_MYPROFILE_GOTO_CHANGE_FORM"), 'modify_link', true) . '<a href="?'. self::POST_KEY_MODE .'='. self::MODE_CHANGE .'" id="modify_link">'. strval(new IconElement('pencil', '', gettext("ALTERNATIVE_PENCIL"))) .'</a>'
+            ))
+        );
         $showlist = array(
             gettext("LABEL_NAME") => htmlentities($profile['firstname'] .' '. $profile['lastname']),
             gettext("LABEL_GENDER") => (intval($profile['ismale']) === 1) ? gettext("GENDER_MALE") : gettext("GENDER_FEMALE"),
@@ -108,7 +166,7 @@ class MyProfileDocument extends MemberDocument {
             gettext("SUBTITLE_MY_PROFILE"),
             gettext("MY_PROFILE_GENERAL_INFORMATION")
         ));
-        $this->addContent($this->buildInterestList($profileobject->getInterests(SessionManager::getCurrentUserID())));
+        $this->addContent($this->buildInterestList($this->profileobject->getInterests(SessionManager::getCurrentUserID())));
     }
 
     /**

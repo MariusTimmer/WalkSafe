@@ -18,6 +18,16 @@ class Profile extends DAO {
     }
 
     /**
+     * Updates a given profile.
+     * @param array Profile data
+     * @return boolean True on success or false
+     */
+    public function update($profile) {
+        $query = 'UPDATE profiles SET firstname = :firstname, lastname = :lastname, ismale = :ismale, dayofbirth = :dayofbirth WHERE userid = :userid';
+        return $this->pdo->executeQuery($query, $profile);
+    }
+
+    /**
      * Fetches the list of interests for a given profileid.
      * @param integer $profileid ProfileID of the requested user profile
      * @return array List of interests

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WalkSafe\n"
 "POT-Creation-Date: 2017-09-09 10:56+0200\n"
-"PO-Revision-Date: 2017-09-09 10:58+0200\n"
+"PO-Revision-Date: 2017-09-09 12:58+0200\n"
 "Last-Translator: Marius Timmer <marius.timmer@web.de>\n"
 "Language-Team: timmer@mariustimmer.no-ip.org\n"
 "Language: de_DE\n"
@@ -372,3 +372,27 @@ msgstr "Viele Grüße"
 #, php-format
 msgid "MAIL_VERIFY_SUBJECT"
 msgstr "Verifikation deines neuen Accounts"
+
+msgid "APPLY_CHANGES"
+msgstr "Änderungen Übernehmen"
+
+msgid "LABEL_MYPROFILE_GOTO_CHANGE_FORM"
+msgstr "Ändere deine Profildaten"
+
+msgid "ALTERNATIVE_PENCIL"
+msgstr "Stift"
+
+msgid "MESSAGE_FULLNAME_REQUIRED"
+msgstr "Der vollständige Name (Vor- und Hausname) sind erforderlich"
+
+msgid "TITLE_PROFILEUPDATE_SUCCESS"
+msgstr "Profil geändert"
+
+msgid "MESSAGE_PROFILEUPDATE_SUCCESS"
+msgstr "Dein Profil wurde erfolgreich aktualisiert"
+
+msgid "TITLE_PROFILEUPDATE_FAILURE"
+msgstr "Profil nicht geändert"
+
+msgid "MESSAGE_PROFILEUPDATE_FAILURE"
+msgstr "Dein Profil konnte nicht aktualisiert werden"
