@@ -41,7 +41,7 @@ class MyProfileDocument extends MemberDocument {
                 $this->buildProfileChangeForm($profile);
                 break;
             default:
-                $this->buildProfileView($profile);
+                $this->buildProfileView($profile, $profileobject);
         }
     }
 
@@ -51,7 +51,7 @@ class MyProfileDocument extends MemberDocument {
      */
     protected function buildProfileChangeForm($profile) {
         $form_content = new TextElement(
-            gettext("MESSAGE_MYPROFILE_CHANGE");
+            gettext("MESSAGE_MYPROFILE_CHANGE")
         );
         $attributelist = array(
             array(
@@ -79,7 +79,7 @@ class MyProfileDocument extends MemberDocument {
             $form_content .= $element;
         }
         $selection_gender = GenderSelectionElement::GENDER_FEMALE;
-        if ($profile[ismale]) {
+        if ($profile['ismale']) {
             $selection_gender = GenderSelectionElement::GENDER_MALE;
         }
         $form_content .= new GenderSelectionElement(
@@ -95,8 +95,9 @@ class MyProfileDocument extends MemberDocument {
     /**
      * Provides the normal view of the profile data.
      * @param Profile $profile Profile data
+     * @param Profile $profileobject Profile class which will be used for the interests
      */
-    protected function buildProfileView($profile) {
+    protected function buildProfileView($profile, $profileobject) {
         $showlist = array(
             gettext("LABEL_NAME") => htmlentities($profile['firstname'] .' '. $profile['lastname']),
             gettext("LABEL_GENDER") => (intval($profile['ismale']) === 1) ? gettext("GENDER_MALE") : gettext("GENDER_FEMALE"),

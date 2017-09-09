@@ -15,7 +15,7 @@ class GenderSelectionElement implements IPrintable {
 
     public function __toString() {
         $html = sprintf(
-            '<fieldset><legend>%s</legend>',
+            '<fieldset><legend>%s</legend><ul style="list-style-type: none;">',
             htmlentities(gettext("LABEL_GENDER"))
         );
         $tmp = array(
@@ -36,6 +36,7 @@ class GenderSelectionElement implements IPrintable {
             )
         );
         foreach ($tmp AS $index => $data) {
+            $html .= new LabelElement($data['label'], $data['id'], true);
             $html .= sprintf(
                 '<input type="radio" id="%s" name="%s[]" value="%d"%s/>',
                 $data['id'],
@@ -43,9 +44,8 @@ class GenderSelectionElement implements IPrintable {
                 $data['value'],
                 ($data['value'] == $this->value) ? ' checked="checked"' : ''
             );
-            $html .= strval(new LabelElement($data['label'], $data['id']));
         }
-        $html .= '</fieldset>';
+        $html .= '</ul></fieldset>';
         return $html;
     }
 
