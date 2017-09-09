@@ -6,8 +6,27 @@
  */
 class MyProfileDocument extends MemberDocument {
 
+    const MODE_VIEW = 0;
+    const MODE_CHANGE = 1;
+    const MODE_SAVE = 2;
+    const MODE_DEFAULT = self::MODE_VIEW;
+    const POST_KEY_MODE = 'mode';
+    const POST_KEY_FIRSTNAME = 'firstname';
+    const POST_KEY_LASTNAME = 'lastname';
+    const POST_KEY_GENDER = 'gender';
+    const POST_KEY_DOB = 'dob';
+    const POST_KEY_SUBMIT = 'submit';
+    protected $mode;
+
     public function __construct() {
         parent::__construct(gettext("TITLE_MY_PROFILE"));
+    }
+
+    protected function readInputData() {
+        $this->mode = $this->getValue(self::POST_KEY_MODE);
+        if (empty($this->mode)) {
+            $this->mode = self::MODE_DEFAULT;
+        }
     }
 
     /**
@@ -17,6 +36,67 @@ class MyProfileDocument extends MemberDocument {
     protected function setupHTML() {
         $profileobject = new Profile();
         $profile = $profileobject->getProfileByUserID(SessionManager::getCurrentUserID());
+        switch ($this->mode) {
+            case self::MODE_CHANGE:
+                $this->buildProfileChangeForm($profile);
+                break;
+            default:
+                $this->buildProfileView($profile);
+        }
+    }
+
+    /**
+     * Provides the formular to change the profile data.
+     * @param Profile $profile Profile data
+     */
+    protected function buildProfileChangeForm($profile) {
+        $form_content = new TextElement(
+            gettext("MESSAGE_MYPROFILE_CHANGE");
+        );
+        $attributelist = array(
+            array(
+                'label' => gettext("LABEL_FIRSTNAME"),
+                'name' => self::POST_KEY_FIRSTNAME,
+                'value' => $profile['firstname']
+            ),
+            array(
+                'label' => gettext("LABEL_LASTNAME"),
+                'name' => self::POST_KEY_LASTNAME,
+                'value' => $profile['lastname']
+            ),
+            array(
+                'label' => gettext("LABEL_DOB"),
+                'name' => self::POST_KEY_DOB,
+                'value' => $profile['dayofbirth']
+            )
+        );
+        foreach ($attributelist AS $index => $attribute) {
+            $element = new LabeledTextInputElement(
+                $attribute['label'],
+                $attribute['name'],
+                $attribute['value']
+            );
+            $form_content .= $element;
+        }
+        $selection_gender = GenderSelectionElement::GENDER_FEMALE;
+        if ($profile[ismale]) {
+            $selection_gender = GenderSelectionElement::GENDER_MALE;
+        }
+        $form_content .= new GenderSelectionElement(
+            self::POST_KEY_GENDER,
+            $selection_gender
+        );
+        $this->addContent(new FormElement(
+            '',
+            $form_content
+        ));
+    }
+
+    /**
+     * Provides the normal view of the profile data.
+     * @param Profile $profile Profile data
+     */
+    protected function buildProfileView($profile) {
         $showlist = array(
             gettext("LABEL_NAME") => htmlentities($profile['firstname'] .' '. $profile['lastname']),
             gettext("LABEL_GENDER") => (intval($profile['ismale']) === 1) ? gettext("GENDER_MALE") : gettext("GENDER_FEMALE"),

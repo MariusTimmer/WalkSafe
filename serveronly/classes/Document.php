@@ -95,11 +95,17 @@ abstract class Document implements IPrintable {
         array_push($this->contentelements, $element);
     }
 
+    /**
+     * Returns the value for the requested key from the post or get data.
+     * @param string $key Key of the requested value
+     * @return string Requested value or null
+     */
     protected function getValue($key) {
         $input = INPUT_GET;
         if (isset($_POST[$key])) {
             $input = INPUT_POST;
-
+        } else if (isset($_GET[$key])) {
+            $input = INPUT_GET;
         }
         return filter_input($input, $key, FILTER_SANITIZE_SPECIAL_CHARS);
     }
