@@ -36,14 +36,15 @@ class GenderSelectionElement implements IPrintable {
             )
         );
         foreach ($tmp AS $index => $data) {
-            $html .= new LabelElement($data['label'], $data['id'], true);
-            $html .= sprintf(
+            $label_obj = new LabelElement($data['label'], $data['id'], true);
+            $input_obj = sprintf(
                 '<input type="radio" id="%s" name="%s[]" value="%d"%s/>',
                 $data['id'],
                 $this->name,
                 $data['value'],
                 ($data['value'] == $this->value) ? ' checked="checked"' : ''
             );
+            $html .= '<li>'. $label_obj . $input_obj .'</li>';
         }
         $html .= '</ul></fieldset>';
         return $html;
