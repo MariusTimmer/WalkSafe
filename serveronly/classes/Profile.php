@@ -17,4 +17,16 @@ class Profile extends DAO {
         ), false);
     }
 
+    /**
+     * Fetches the list of interests for a given profileid.
+     * @param integer $profileid ProfileID of the requested user profile
+     * @return array List of interests
+     */
+    public function getInterests($profileid) {
+        $query = 'SELECT interests.interestid, interests.label, profile_interests.created FROM interests LEFT JOIN profile_interests USING (interestid) WHERE profile_interests.profileid = :profileid';
+        return $this->pdo->executeQuery($query, array(
+            'profileid' => $profileid
+        ));
+    }
+
 }

@@ -11,7 +11,7 @@ class JobRequestDocument extends MemberDocument {
     protected $mode;
 
     public function __construct() {
-        parent::__construct(gettext("Job requests"));
+        parent::__construct(gettext("TITLE_JOBREQUEST"));
     }
 
     protected function readInputData() {
@@ -30,8 +30,8 @@ class JobRequestDocument extends MemberDocument {
         switch ($this->mode) {
             case self::MODE_REQUESTLIST:
                 $this->addContent(new TextElement(
-                    '<label for="newrequest">'. gettext("You can add a new job request by clicking on the plus icon below") .':</label><a href="?mode='. self::MODE_REQUEST_FORMULAR .'" target="_self"><img id="newrequest" title="'. gettext("Add a new job request") .'" class="icon button" src="img/add.png" alt="'. gettext("New job request") .'" /></a>',
-                    gettext("New job request")
+                    '<label for="newrequest">'. gettext("MESSAGE_NEW_JOBREQUEST") .':</label><a href="?mode='. self::MODE_REQUEST_FORMULAR .'" target="_self"><img id="newrequest" title="'. gettext("TOOLTIP_NEW_JOBREQUEST") .'" class="icon button" src="img/add.png" alt="'. gettext("TOOLTIP_NEW_JOBREQUEST") .'" /></a>',
+                    gettext("SUBTITLE_NEW_JOBREQUEST")
                 ));
                 break;
         }

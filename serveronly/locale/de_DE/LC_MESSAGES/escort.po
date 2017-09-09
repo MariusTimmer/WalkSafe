@@ -1,0 +1,317 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WalkSafe\n"
+"POT-Creation-Date: 2017-08-31 20:52+0200\n"
+"PO-Revision-Date: 2017-08-31 21:41+0200\n"
+"Last-Translator: Marius Timmer <admin@mariustimmer.de>\n"
+"Language-Team: timmer@mariustimmer.no-ip.org\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/Document.php:23 classes/HomeDocument.php:6
+msgid "TITLE_HOME"
+msgstr "Zuhause"
+
+#: classes/Document.php:24 classes/MyProfileDocument.php:10
+msgid "TITLE_MY_PROFILE"
+msgstr "Mein Profil"
+
+#: classes/Document.php:25
+msgid "TITLE_FIND_JOBS"
+msgstr "Aufträge finden"
+
+#: classes/Document.php:26 classes/JobRequestDocument.php:14
+msgid "TITLE_JOBREQUEST"
+msgstr "Aufträge"
+
+#: classes/Document.php:27 classes/LogoutDocument.php:6
+msgid "TITLE_LOGOUT"
+msgstr "Abmelden"
+
+#: classes/Document.php:32 classes/StartDocument.php:6
+msgid "TITLE_START"
+msgstr "Start"
+
+#: classes/Document.php:33 classes/LoginDocument.php:6
+msgid "TITLE_LOGIN"
+msgstr "Anmelden"
+
+#: classes/Document.php:34 classes/SigninDocument.php:6
+msgid "TITLE_SIGNIN"
+msgstr "Registrieren"
+
+#: classes/Document.php:36 classes/ImpressumDocument.php:6
+msgid "TITLE_IMPRESSUM"
+msgstr "Impressum"
+
+#: classes/Document.php:104
+msgid "SUBTITLE_PERMISSION_DENIED"
+msgstr "Zugriff verweigert"
+
+#: classes/Document.php:105
+msgid "MESSAGE_PERMISSION_DENIED"
+msgstr "Dir fehlt die Berechtigung um die angefragten Inhalte zu sehen."
+
+#: classes/HomeDocument.php:11
+#, php-format
+msgid "SUBTITLE_HOME_WELCOME"
+msgstr "Willkommen %s!"
+
+#: classes/HomeDocument.php:12
+msgid "MESSAGE_HOME_WELCOME"
+msgstr "Wir freuen uns, dass du mal wieder vorbei schaust."
+
+#: classes/ImpressumDocument.php:11
+#, php-format
+msgid "MESSAGE_RESPONSIBLE"
+msgstr "Verantwortlich für den Betrieb der Plattform ist die unten aufgeführte Person. Bei weiteren Fragen wenden Sie sich bitte direkt dort."
+
+#: classes/ImpressumDocument.php:12
+msgid "SUBTITLE_RESPONSIBLE"
+msgstr "Verantwortlicher"
+
+#: classes/ImpressumDocument.php:15
+#, php-format
+msgid "%s<br />%s<br />%s<br /><a href=\"mailto:%s\">%s</a>"
+msgstr ""
+
+#: classes/ImpressumDocument.php:24
+msgid "SUBTITLE_CONTACT"
+msgstr "Kontakt"
+
+#: classes/JobRequestDocument.php:33
+msgid "MESSAGE_NEW_JOBREQUEST"
+msgstr "Um einen neuen Auftrag auszuschreiben, kannst du einfach auf das folgende Icon klicken"
+
+#: classes/JobRequestDocument.php:33
+msgid "TOOLTIP_NEW_JOBREQUEST"
+msgstr "Neuen Auftrag ausschreiben"
+
+#: classes/JobRequestDocument.php:34
+msgid "SUBTITLE_NEW_JOBREQUEST"
+msgstr "Neuer Auftrag"
+
+#: classes/LoginDocument.php:34
+msgid "MESSAGE_LOGIN_WELCOME"
+msgstr "Um diese Platform nutzen zu können, musst du dich hier mit deinem Benutzernamen und Passwort anmelden. Solltest du noch nicht angemeldet sein, kannst du einen neuen Account registrieren."
+
+#: classes/LoginDocument.php:35
+msgid "SUBTITLE_LOGIN_WELCOME"
+msgstr "Benutzerdaten eingeben"
+
+#: classes/LoginDocument.php:39
+msgid "MESSAGE_LOGIN_FAILURE"
+msgstr "Die von dir angegebenen Nutzerdaten (Benutzername und/oder Passwort) sind dem System nicht bekannt."
+
+#: classes/LoginDocument.php:40
+msgid "SUBTITLE_LOGIN_FAILURE"
+msgstr "Anmeldung fehlgeschlagen"
+
+#: classes/LoginFormElement.php:14
+msgid "MESSAGE_LOGINFORM_INTRO"
+msgstr "Gib hier deinen Benutzernamen und das dazugehörige Passwort ein."
+
+#: classes/LoginFormElement.php:15
+msgid "USE_CREDENTIALS"
+msgstr "Anmelde-Daten"
+
+#: classes/LoginFormElement.php:16 classes/SigninFormElement.php:16
+msgid "LABEL_USERNAME"
+msgstr "Benutzername"
+
+#: classes/LoginFormElement.php:16
+msgid "EXAMPLE_USERNAME"
+msgstr "MaxMust"
+
+#: classes/LoginFormElement.php:17 classes/SigninFormElement.php:18
+msgid "LABEL_PASSWORD"
+msgstr "Passwort"
+
+#: classes/LoginFormElement.php:19
+msgid "BUTTON_LOGIN_SUBMIT"
+msgstr "Anmelden"
+
+#: classes/LogoutDocument.php:16
+msgid "MESSAGE_LOGOUT_SUCCESS"
+msgstr "Du hast dich soeben erfolgreich abgemeldet. Besuch uns bald wieder!"
+
+#: classes/LogoutDocument.php:17
+msgid "SUBTITLE_LOGOUT_SUCCESS"
+msgstr "Erfolgreiche Abmeldung"
+
+#: classes/LogoutDocument.php:26
+msgid "MESSAGE_LOGOUT_FAILURE"
+msgstr "Bei dem Versuch dich abzumelden ist ein Fehler aufgetreten. Am Besten versuchst du es direkt noch einmal. Ansonsten solltest du einmal deinen Browser schließen um dich gegen Fremdzugriffe zu schützen."
+
+#: classes/LogoutDocument.php:27
+msgid "SUBTITLE_LOGOUT_FAILURE"
+msgstr "Abmeldung fehlgeschlagen"
+
+#: classes/MyProfileDocument.php:21
+msgid "LABEL_NAME"
+msgstr "Name"
+
+#: classes/MyProfileDocument.php:22
+msgid "LABEL_GENDER"
+msgstr "Geschlecht"
+
+#: classes/MyProfileDocument.php:22
+msgid "GENDER_MALE"
+msgstr "Männlich"
+
+#: classes/MyProfileDocument.php:22
+msgid "GENDER_FEMALE"
+msgstr "Weiblich"
+
+#: classes/MyProfileDocument.php:23
+msgid "LABEL_DOB"
+msgstr "Geburtstag"
+
+#: classes/MyProfileDocument.php:23
+msgid "FORMAT_DOB"
+msgstr "d.m.y"
+
+#: classes/MyProfileDocument.php:27
+msgid "SUBTITLE_MY_PROFILE"
+msgstr "Mein Profil"
+
+#: classes/MyProfileDocument.php:28
+msgid "MY_PROFILE_GENERAL_INFORMATION"
+msgstr "Hier siehst du deine Profil-Informationen auf einen Blick und kannst sie gegebenenfalls auch ändern."
+
+#: classes/MyProfileDocument.php:44
+msgid "USER_INTERESTS"
+msgstr "Interessen"
+
+#: classes/SigninDocument.php:13
+msgid "TITLE_ALREADY_LOGGEDIN"
+msgstr "Bereits angemeldet"
+
+#: classes/SigninDocument.php:14
+msgid "MESSAGE_ALREADY_LOGGEDIN"
+msgstr "Du warst bereits angemeldet. Daher wird die Sitzung einfach weiter geführt."
+
+#: classes/SigninDocument.php:35
+msgid "MESSAGE_REGISTER_INFORMATION_MISSING"
+msgstr "Du hast nicht alle erforderlichen Felder für die Registrierung ausgefüllt!"
+
+#: classes/SigninDocument.php:36
+msgid "TITLE_MISSING_INFORMATION"
+msgstr "Fehlende Information"
+
+#: classes/SigninDocument.php:46
+msgid "MESSAGE_USERNAME_ALREADY_TAKEN"
+msgstr "Dein gewünschter Benutzername ist leider bereits vergeben."
+
+#: classes/SigninDocument.php:47
+msgid "TITLE_USERNAME_ALREADY_TAKEN"
+msgstr "Nutzername schon vergeben"
+
+#: classes/SigninDocument.php:54
+msgid "MESSAGE_REGISTER_PENDING_VERIFICATION"
+msgstr "Eine Verifikation steht noch aus."
+
+#: classes/SigninDocument.php:55
+msgid "TITLE_REGISTER_PENDING_VERIFICATION"
+msgstr "Ausstehende Verifikation"
+
+#: classes/SigninDocument.php:62
+msgid "MESSAGE_REGISTER_VERIFICATION_MAIL_SUCCESS"
+msgstr "Eine E-Mail mit Verifikations-Link wurde erfolgreich an deine Adresse geschickt. Bitte nutze den dort angegebenen Link um deine Registrierung mit einer Verifikation abzuschließen."
+
+#: classes/SigninDocument.php:63
+msgid "TITLE_REGISTER_VERIFICATION_MAIL_SUCCESS"
+msgstr "E-Mail versendet"
+
+#: classes/SigninDocument.php:68
+msgid "MESSAGE_REGISTER_VERIFICATION_MAIL_FAILURE"
+msgstr "Es trat ein Fehler bei dem Versuch auf, dir eine E-Mail mit dem Verifizierungs-Link zu schicken. Bitte versuche es noch einmal oder melde dich bei einem Administrator."
+
+#: classes/SigninDocument.php:69
+msgid "TITLE_REGISTER_VERIFICATION_MAIL_FAILURE"
+msgstr "E-Mail nicht verschickt"
+
+#: classes/SigninFormElement.php:15
+msgid "MESSAGE_SIGNINFORM_INTRO"
+msgstr "Um vollen Zugriff auf diese Plattform zu bekommen, musst du dich anmelden können. Dafür hast du hier die Möglichkeit, dir einen eigenen Account anzulegen und teil des Systems zu werden."
+
+#: classes/SigninFormElement.php:16
+msgid "EXAMPLE_NAME"
+msgstr "Maximilian Mustermann"
+
+#: classes/SigninFormElement.php:17
+msgid "LABEL_EMAIL"
+msgstr "E-Mail"
+
+#: classes/SigninFormElement.php:17
+msgid "EXAMPLE_EMAIL"
+msgstr "maximilian.mustermann@internet.com"
+
+#: classes/SigninFormElement.php:19
+msgid "BUTTON_SIGNIN_SUBMIT"
+msgstr "Registrieren"
+
+#: classes/StartDocument.php:10
+msgid "TEXT_STARTDOCUMENT"
+msgstr "Du befindest dich hier auf der Startseite unserer Platform. Für den Fall dass du bereits einen Account hast, kannst du dich im Menü unter \"Anmelden\" anmelden. Ansonsten hast du unter dem Menüpunkt \"Registrieren\" die Möglichkeit, dir einen neuen Account zuzulegen und so Teil des Systems zu werden und davon zu profitieren."
+
+#: classes/StartDocument.php:10
+msgid "SUBTITLE_START"
+msgstr "Herzlich Willkommen!"
+
+#: classes/VerifyDocument.php:8
+msgid "TITLE_VERIFY"
+msgstr "Verifizieren"
+
+#: classes/VerifyDocument.php:21
+msgid "MESSAGE_VERIFY_INTRO"
+msgstr "An dieser Stelle kannst du deine beantragte Registrierung eines neuen Accounts mit Hilfe des in der E-Mail enthaltenen Codes verifizieren, um uns gegenüber deine Echtheit zu beweisen."
+
+#: classes/VerifyDocument.php:22
+msgid "VERIFICATION_HASH"
+msgstr "Verifikations-Code"
+
+#: classes/VerifyDocument.php:23
+msgid "VERIFY_ACCOUNT"
+msgstr "Verifizieren"
+
+#: classes/VerifyDocument.php:53
+msgid "MESSAGE_VERIFYMAIL_SUCCESS"
+msgstr "Dein Account wurde erfolgreich verifiziert. Du kannst dich nun ganz normal mit Benutzername und Passwort anmelden."
+
+#: classes/VerifyDocument.php:54
+msgid "SUBTITLE_VERIFYMAIL_SUCCESS"
+msgstr "Erfolgreich verifiziert"
+
+#: classes/VerifyDocument.php:65
+msgid "MESSAGE_VERIFYMAIL_FAILURE"
+msgstr "Wir konnten deinen Account nicht verifizieren. Bitte prüfe deinen Code oder kontaktiere einen Administrator."
+
+#: classes/VerifyDocument.php:66
+msgid "SUBTITLE_VERIFYMAIL_FAILURE"
+msgstr "Verifikation fehlgeschlagen"
+
+#: classes/VerifyMail.php:17
+#, php-format
+msgid "MAIL_VERIFY_INTRODUCTION"
+msgstr "Hallo %s,"
+
+#: classes/VerifyMail.php:19
+msgid "MAIL_VERIFY_BODY"
+msgstr "wir freuen uns, dass du dir einen Account bei uns registrieren möchtest. Um uns gegenüber deine Echtheit (oder zumindest die, deiner E-Mail) zu bestätigen, bitten wir dich, dich über den folgenden Link zu bestätigen. Anschließend bist du ein vollwertiges Mitglied im System."
+
+#: classes/VerifyMail.php:26
+msgid "MAIL_VERIFY_GREETINGS"
+msgstr "Viele Grüße"
+
+#: classes/VerifyMail.php:32
+#, php-format
+msgid "MAIL_VERIFY_SUBJECT"
+msgstr "Verifikation deines neuen Accounts"

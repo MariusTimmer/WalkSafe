@@ -3,7 +3,7 @@
 class LogoutDocument extends MemberDocument {
 
     public function __construct() {
-        parent::__construct(gettext("Logout"));
+        parent::__construct(gettext("TITLE_LOGOUT"));
     }
 
     protected function execute() {
@@ -13,8 +13,8 @@ class LogoutDocument extends MemberDocument {
              * so we can inform the user about it.
              */
             $this->addContent(new TextElement(
-                gettext("You were logged out successfully!"),
-                gettext("Logged out")
+                gettext("MESSAGE_LOGOUT_SUCCESS"),
+                gettext("SUBTITLE_LOGOUT_SUCCESS")
             ));
         } else {
             /**
@@ -23,8 +23,8 @@ class LogoutDocument extends MemberDocument {
              * session is still active.
              */
             $this->addContent(new TextElement(
-                gettext("Some strange error occured so you are still logged in. Please try it again or contact a system administrator. If you gonna leave the computer and another person will use it, make sure you close the session by closing your browser."),
-                gettext("You are still logged in")
+                gettext("MESSAGE_LOGOUT_FAILURE"),
+                gettext("SUBTITLE_LOGOUT_FAILURE")
             ));
         }
     }

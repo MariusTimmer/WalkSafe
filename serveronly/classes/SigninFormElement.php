@@ -12,11 +12,11 @@ class SigninFormElement extends Element {
             'action' => $action,
             'method' => 'POST'
         ), false);
-        $innerHTML  = '<p>We are glad that you want to register a new account. Fill in the following form and we will send you an email with an activation link.</p>';
-        $innerHTML .= '<label for="'. self::KEY_USERNAME .'">'. gettext("Username") .':</label>'. new TextInputElement(self::KEY_USERNAME, '', gettext("John Doe")) .'<br />';
-        $innerHTML .= '<label for="'. self::KEY_EMAIL .'">'. gettext("E-Mail") .':</label>'. new TextInputElement(self::KEY_EMAIL, '', gettext("John.Doe@internet.com")) .'<br />';
-        $innerHTML .= '<label for="'. self::KEY_PASSWORD .'">'. gettext("Password") .':</label>'. new PasswordInputElement(self::KEY_PASSWORD, '', gettext("Password"));
-        $innerHTML .= new SubmitElement(self::KEY_SUBMIT, gettext("SignIn"));
+        $innerHTML  = '<p>'. gettext("MESSAGE_SIGNINFORM_INTRO") .'</p>';
+        $innerHTML .= '<label for="'. self::KEY_USERNAME .'">'. gettext("LABEL_USERNAME") .':</label>'. new TextInputElement(self::KEY_USERNAME, '', gettext("EXAMPLE_NAME")) .'<br />';
+        $innerHTML .= '<label for="'. self::KEY_EMAIL .'">'. gettext("LABEL_EMAIL") .':</label>'. new TextInputElement(self::KEY_EMAIL, '', gettext("EXAMPLE_EMAIL")) .'<br />';
+        $innerHTML .= '<label for="'. self::KEY_PASSWORD .'">'. gettext("LABEL_PASSWORD") .':</label>'. new PasswordInputElement(self::KEY_PASSWORD, '', gettext("LABEL_PASSWORD"));
+        $innerHTML .= new SubmitElement(self::KEY_SUBMIT, gettext("BUTTON_SIGNIN_SUBMIT"));
         $this->setInnerHTML($innerHTML);
     }
 

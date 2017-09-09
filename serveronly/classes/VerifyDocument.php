@@ -5,7 +5,7 @@ class VerifyDocument extends PublicDocument {
     protected $verifyid;
 
     public function __construct() {
-        parent::__construct(gettext("Verify access"));
+        parent::__construct(gettext("TITLE_VERIFY"));
     }
 
     protected function readInputData() {
@@ -18,9 +18,9 @@ class VerifyDocument extends PublicDocument {
      */
     protected function setupHTML() {
         if (empty($this->verifyid)) {
-            $formcontent  = new TextElement(gettext("This site will provide the ability to verify new user accounts."));
-            $formcontent .= new TextInputElement('hash', '', gettext("Verification hash"));
-            $formcontent .= new SubmitElement('verify', gettext("Verify account"));
+            $formcontent  = new TextElement(gettext("MESSAGE_VERIFY_INTRO"));
+            $formcontent .= new TextInputElement('hash', '', gettext("VERIFICATION_HASH"));
+            $formcontent .= new SubmitElement('verify', gettext("VERIFY_ACCOUNT"));
             $this->addContent(new FormElement('verify.php', $formcontent));
         }
     }
@@ -50,8 +50,8 @@ class VerifyDocument extends PublicDocument {
                  * credentials of the new account.
                  */
                 $this->addContent(new TextElement(
-                    gettext("You have verified your new account successfully. Now you can log in."),
-                    gettext("Success")
+                    gettext("MESSAGE_VERIFYMAIL_SUCCESS"),
+                    gettext("SUBTITLE_VERIFYMAIL_SUCCESS")
                 ));
                 return true;
             } else {
@@ -62,8 +62,8 @@ class VerifyDocument extends PublicDocument {
                  * Since we use transactions we are safe.
                  */
                 $this->addContent(new TextElement(
-                    gettext("Could not verify your new user. Maybe the given hash is not correct or a temporary database error caused this."),
-                    gettext("Failure")
+                    gettext("MESSAGE_VERIFYMAIL_FAILURE"),
+                    gettext("SUBTITLE_VERIFYMAIL_FAILURE")
                 ));
                 return false;
             }

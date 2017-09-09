@@ -11,12 +11,12 @@ class LoginFormElement extends Element {
             'action' => $action,
             'method' => 'POST'
         ), false);
-        $innerHTML  = '<p>In order to use this application you have to enter your user credentials here:</p>';
-        $innerHTML .= '<fieldset><legend>'. gettext("User credentials") .'</legend>';
-        $innerHTML .= '<label for="'. self::KEY_USERNAME .'">'. gettext("Username") .':</label>'. new TextInputElement(self::KEY_USERNAME, '', gettext("John Doe")) .'<br />';
-        $innerHTML .= '<label for="'. self::KEY_PASSWORD .'">'. gettext("Password") .':</label>'. new PasswordInputElement(self::KEY_PASSWORD, '', gettext("Password"));
+        $innerHTML  = '<p>'. gettext("MESSAGE_LOGINFORM_INTRO") .'</p>';
+        $innerHTML .= '<fieldset><legend>'. gettext("USE_CREDENTIALS") .'</legend>';
+        $innerHTML .= '<label for="'. self::KEY_USERNAME .'">'. gettext("LABEL_USERNAME") .':</label>'. new TextInputElement(self::KEY_USERNAME, '', gettext("EXAMPLE_USERNAME")) .'<br />';
+        $innerHTML .= '<label for="'. self::KEY_PASSWORD .'">'. gettext("LABEL_PASSWORD") .':</label>'. new PasswordInputElement(self::KEY_PASSWORD, '', gettext("LABEL_PASSWORD"));
         $innerHTML .= '</fieldset>';
-        $innerHTML .= new SubmitElement(self::KEY_SUBMIT, gettext("Login"));
+        $innerHTML .= new SubmitElement(self::KEY_SUBMIT, gettext("BUTTON_LOGIN_SUBMIT"));
         $this->setInnerHTML($innerHTML);
     }
 

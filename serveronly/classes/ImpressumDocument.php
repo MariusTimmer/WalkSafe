@@ -3,13 +3,13 @@
 class ImpressumDocument extends PublicDocument {
 
     public function __construct() {
-        parent::__construct(gettext("Impressum"));
+        parent::__construct(gettext("TITLE_IMPRESSUM"));
     }
 
     protected function setupHTML() {
         $this->addContent(new TextElement(
-            sprintf(gettext("Responsible for this website and application is the operator %s but not for the user data."), htmlentities($this->serverconfiguration->getResponsible())),
-            gettext("Responsibility")
+            sprintf(gettext("MESSAGE_RESPONSIBLE"), htmlentities($this->serverconfiguration->getResponsible())),
+            gettext("SUBTITLE_RESPONSIBLE")
         ));
         $content = sprintf(
             gettext('%s<br />%s<br />%s<br /><a href="mailto:%s">%s</a>'),
@@ -21,7 +21,7 @@ class ImpressumDocument extends PublicDocument {
         );
         $this->addContent(new TextElement(
             $content,
-            gettext("Contact")
+            gettext("SUBTITLE_CONTACT")
         ));
     }
 

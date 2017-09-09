@@ -3,11 +3,11 @@
 class StartDocument extends PublicDocument {
 
     public function __construct() {
-        parent::__construct(gettext("Start"));
+        parent::__construct(gettext("TITLE_START"));
     }
 
     protected function setupHTML() {
-        $this->addContent(new TextElement(gettext("It is nice to see you here. This application allows you to search for a person to escort you or a person you can escort."), gettext("Welcome")));
+        $this->addContent(new TextElement(gettext("TEXT_STARTDOCUMENT"), gettext("SUBTITLE_START")));
     }
 
 }

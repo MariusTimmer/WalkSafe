@@ -14,22 +14,22 @@ class VerifyMail extends EMail {
 
     protected function getContent() {
         return implode("\r\n", array(
-            sprintf(gettext("Dear %s,"), $this->username),
+            sprintf(gettext("MAIL_VERIFY_INTRODUCTION"), $this->username),
             '',
-            gettext("we are glad that you want to create a new account and become a new member of this escort service. There is just one last step you have to do before you can log in to the application. Just click the link below containing your verification hash:"),
+            gettext("MAIL_VERIFY_BODY"),
             sprintf(
                 'https://%s/escort/verify.php?hash=%s',
                 $this->serverconfiguration->getFQDN(),
                 $this->hash
             ),
             '',
-            gettext("Thank you and have a nice day!")
+            gettext("MAIL_VERIFY_GREETINGS")
         ));
     }
 
     protected function getSubject() {
         return sprintf(
-            gettext("Account verification for %s"),
+            gettext("MAIL_VERIFY_SUBJECT"),
             $this->username
         );
     }

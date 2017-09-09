@@ -19,3 +19,10 @@ function __autoload($classname) {
     }
     return false;
 }
+
+/**
+ * This has to be done before the first instance will be created:
+ */
+$locale =  Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+$locale .= '_'. strtoupper($locale);
+Document::initI18n($locale .'.UTF-8');

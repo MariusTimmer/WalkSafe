@@ -2,6 +2,7 @@
 
 abstract class Document implements IPrintable {
 
+    const TEXTDOMAIN = 'escort';
     protected $subtitle;
     protected $javascripts;
     protected $stylesheets;
@@ -15,25 +16,26 @@ abstract class Document implements IPrintable {
 
     protected function __construct($subtitle, $mainmenu = NULL) {
         $this->serverconfiguration = new ServerConfiguration();
+        $this->initI18n();
         $this->mainmenu = new MainMenu();
         if (SessionManager::isLoggedIn()) {
             /**
              * Menu for the members site.
              */
-            $this->mainmenu->addIcon('myprofile.php', 'profile', 'profileicon', gettext('My profile'));
-            $this->mainmenu->addLink('index.php', gettext('Home'));
-            $this->mainmenu->addLink('findjob.php', gettext('Find a job'));
-            $this->mainmenu->addLink('jobrequest.php', gettext('Job request'));
-            $this->mainmenu->addLink('logout.php', gettext('Logout'));
+            $this->mainmenu->addIcon('index.php', 'home', 'homeicon', gettext('TITLE_HOME'));
+            $this->mainmenu->addIcon('myprofile.php', 'profile', 'profileicon', gettext('TITLE_MY_PROFILE'));
+            $this->mainmenu->addIcon('findjob.php', 'find', 'findicon', gettext('TITLE_FIND_JOBS'));
+            $this->mainmenu->addIcon('jobrequest.php', 'history', 'historyicon', gettext('TITLE_JOBREQUEST'));
+            $this->mainmenu->addIcon('logout.php', 'logout', 'logouticon', gettext('TITLE_LOGOUT'));
         } else {
             /**
              * Menu for the public site.
              */
-            $this->mainmenu->addLink('index.php', gettext("Start"));
-            $this->mainmenu->addLink('login.php', gettext("LogIn"));
-            $this->mainmenu->addLink('signin.php', gettext("SignIn"));
+            $this->mainmenu->addLink('index.php', gettext("TITLE_START"));
+            $this->mainmenu->addLink('login.php', gettext("TITLE_LOGIN"));
+            $this->mainmenu->addLink('signin.php', gettext("TITLE_SIGNIN"));
         }
-        $this->mainmenu->addLink('impressum.php', gettext("Impressum"));
+        $this->mainmenu->addLink('impressum.php', gettext("TITLE_IMPRESSUM"));
         $this->subtitle = $subtitle;
         $this->javascripts = array(
             'js/jquery.min.js',
@@ -52,6 +54,13 @@ abstract class Document implements IPrintable {
         if ($this->allowedView()) {
             $this->setupHTML();
         }
+    }
+
+    static public function initI18n($locale = 'en') {
+        $localedir = SERVERONLY_ROOT . DIRECTORY_SEPARATOR . 'locale';
+        setlocale(LC_ALL, $locale);
+        bindtextdomain(self::TEXTDOMAIN, $localedir);
+        textdomain(self::TEXTDOMAIN);
     }
 
     protected function readInputData() {
@@ -101,8 +110,8 @@ abstract class Document implements IPrintable {
              * The user is not allowed to see this document so
              * we only show a general permission denied page.
              */
-            $title = gettext("Permission denied");
-            $message = gettext("You do not have the permission to see this page.");
+            $title = gettext("SUBTITLE_PERMISSION_DENIED");
+            $message = gettext("MESSAGE_PERMISSION_DENIED");
             $errordocument = new ErrorDocument($title, $message);
             return $errordocument->__toString();
         }

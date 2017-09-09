@@ -3,7 +3,7 @@
 class LoginDocument extends PublicDocument {
 
     public function __construct() {
-        parent::__construct(gettext("Login"));
+        parent::__construct(gettext("TITLE_LOGIN"));
     }
 
     protected function setupHTML() {
@@ -31,13 +31,13 @@ class LoginDocument extends PublicDocument {
                 $success = SessionManager::login($username, $password);
                 if ($success) {
                     $this->addContent(new TextElement(
-                        gettext("You are logged in now and can use the application."),
-                        gettext("Welcome [username here]!")
+                        gettext("MESSAGE_LOGIN_WELCOME"),
+                        gettext("SUBTITLE_LOGIN_WELCOME")
                     ));
                 } else {
                     $this->addContent(new TextElement(
-                        gettext("Your username or password is not correct. Please check and try again."),
-                        gettext("Failure")
+                        gettext("MESSAGE_LOGIN_FAILURE"),
+                        gettext("SUBTITLE_LOGIN_FAILURE")
                     ));
                 }
             }
