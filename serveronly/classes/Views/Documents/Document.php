@@ -10,14 +10,14 @@ abstract class Document implements IPrintable {
     protected $serverconfiguration;
 
     /**
-     * @var Mainmenu $mainmenu The main menu
+     * @var MainMenuElement $mainmenu The main menu
      */
     protected $mainmenu;
 
     protected function __construct($subtitle, $mainmenu = NULL) {
         $this->serverconfiguration = new ServerConfiguration();
         $this->initI18n();
-        $this->mainmenu = new MainMenu();
+        $this->mainmenu = new MainMenuElement();
         if (SessionManager::isLoggedIn()) {
             /**
              * Menu for the members site.

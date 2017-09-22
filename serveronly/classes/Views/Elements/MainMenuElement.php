@@ -1,6 +1,6 @@
 <?php
 
-class MainMenu extends Element {
+class MainMenuElement extends Element {
 
     const DEFAULT_TITLE = 'Main menu';
 
