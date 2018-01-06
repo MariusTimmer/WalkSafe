@@ -1,0 +1,9 @@
+<phpunit
+    bootstrap="serveronly/autoload.php"
+    verbose="true">
+    <testsuites>
+        <testsuite name="Elements">
+            <file>tests/ElementTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>
