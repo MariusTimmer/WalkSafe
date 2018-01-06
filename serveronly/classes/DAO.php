@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkSafe;
+
 abstract class DAO {
 
     protected $pdo;

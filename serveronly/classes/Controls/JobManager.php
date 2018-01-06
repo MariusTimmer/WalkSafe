@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Controls;
+
+use WalkSafe\Controls\DatabaseManager;
+
 class JobManager {
 
     protected $pdo;

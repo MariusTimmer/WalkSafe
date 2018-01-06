@@ -1,5 +1,14 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Controls\LoginManager;
+use WalkSafe\Views\Documents\PublicDocument;
+use WalkSafe\Views\Elements\TextElement;
+use WalkSafe\Views\Elements\TextInputElement;
+use WalkSafe\Views\Elements\SubmitElement;
+use WalkSafe\Views\Elements\FormElement;
+
 class VerifyDocument extends PublicDocument {
 
     protected $verifyid;

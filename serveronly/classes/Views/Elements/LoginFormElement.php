@@ -1,5 +1,10 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\Elements\Element;
+use WalkSafe\Views\Elements\SubmitElement;
+
 class LoginFormElement extends Element {
 
     const KEY_USERNAME = 'username';

@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkSafe;
+
 class VerifyMail extends EMail {
 
     protected $email;

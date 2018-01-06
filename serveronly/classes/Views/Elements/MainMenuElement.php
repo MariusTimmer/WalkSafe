@@ -1,5 +1,10 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\Elements\Element;
+use WalkSafe\Views\Elements\IconElement;
+
 class MainMenuElement extends Element {
 
     const DEFAULT_TITLE = 'Main menu';

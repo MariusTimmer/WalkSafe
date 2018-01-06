@@ -1,5 +1,10 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\IPrintable;
+use WalkSafe\Views\Elements\LabelElement;
+
 class GenderSelectionElement implements IPrintable {
 
     const GENDER_FEMALE = 0;

@@ -1,5 +1,10 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\Documents\PublicDocument;
+use WalkSafe\Views\Elements\TextElement;
+
 class StartDocument extends PublicDocument {
 
     public function __construct() {

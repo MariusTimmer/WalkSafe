@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkSafe;
+
 class ServerConfiguration extends Configuration {
 
     const FILENAME = SERVERONLY_ROOT . DIRECTORY_SEPARATOR .'server.json';

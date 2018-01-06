@@ -1,5 +1,11 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\IPrintable;
+use WalkSafe\Views\Elements\LabelElement;
+use WalkSafe\Views\Elements\TextInputElement;
+
 class LabeledTextInputElement implements IPrintable {
 
     protected $label;

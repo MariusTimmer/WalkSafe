@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+namespace WalkSafe\Controls;
 
 class SessionManager {
 
@@ -46,3 +46,4 @@ class SessionManager {
     }
 
 }
+session_start();

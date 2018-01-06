@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\Documents\MemberDocument;
+
 class HomeDocument extends MemberDocument {
 
     public function __construct() {

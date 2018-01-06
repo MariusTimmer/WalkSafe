@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkSafe;
+
 class Profile extends DAO {
 
     public function getProfileByID($profileid) {

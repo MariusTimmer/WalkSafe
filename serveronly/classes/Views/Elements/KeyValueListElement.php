@@ -1,5 +1,11 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\Elements\Element;
+use WalkSafe\Views\Elements\TextElement;
+use WalkSafe\Views\Elements\LabelElement;
+
 class KeyValueListElement extends Element {
 
     public function __construct($keyvalues = array(), $title = '', $description = '') {

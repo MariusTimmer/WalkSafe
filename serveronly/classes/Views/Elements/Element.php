@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\IPrintable;
+
 abstract class Element implements IPrintable {
 
     protected $tagname;

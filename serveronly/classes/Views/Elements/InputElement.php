@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\Elements\Element;
+
 abstract class InputElement extends Element {
 
     public function __construct($type, $name, $value = '', $placeholder = '') {

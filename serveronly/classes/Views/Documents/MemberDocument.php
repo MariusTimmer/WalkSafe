@@ -1,5 +1,10 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Controls\UserManager;
+use WalkSafe\Controls\SessionManager;
+
 class MemberDocument extends Document {
 
     protected $usermanager;

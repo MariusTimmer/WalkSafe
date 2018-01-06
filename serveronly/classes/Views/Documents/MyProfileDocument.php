@@ -1,5 +1,19 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\Documents\MemberDocument;
+use WalkSafe\Profile;
+use WalkSafe\Controls\SessionManager;
+use WalkSafe\Views\Elements\GenderSelectionElement;
+use WalkSafe\Views\Elements\TextElement;
+use WalkSafe\Views\Elements\LabeledTextInputElement;
+use WalkSafe\Views\Elements\LabelElement;
+use WalkSafe\Views\Elements\SubmitElement;
+use WalkSafe\Views\Elements\FormElement;
+use WalkSafe\Views\Elements\KeyValueListElement;
+
+
 /**
  * This class represents the document to show and edit the users own profile.
  * @date 2017-08-27

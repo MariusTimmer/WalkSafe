@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkSafe\Controls;
+
 class LoginManager extends DAO {
 
     public function getUserIDByUsernameAndPassword($username, $password) {

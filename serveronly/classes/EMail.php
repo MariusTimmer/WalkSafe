@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe;
+
+use WalkSafe\ServerConfiguration;
+
 abstract class EMail {
 
     protected $from;

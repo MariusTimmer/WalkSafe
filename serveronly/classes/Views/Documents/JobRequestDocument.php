@@ -1,5 +1,10 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\Documents\MemberDocument;
+use WalkSafe\Views\Elements\TextElement;
+
 class JobRequestDocument extends MemberDocument {
 
     const MODE_REQUESTLIST = 'list';

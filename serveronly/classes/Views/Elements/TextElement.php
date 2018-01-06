@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\IPrintable;
+
 class TextElement implements IPrintable {
 
     protected $title;

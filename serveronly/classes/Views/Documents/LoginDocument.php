@@ -1,5 +1,12 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\Documents\PublicDocument;
+use WalkSafe\Views\Elements\LoginFormElement;
+use WalkSafe\Views\Elements\TextElement;
+use WalkSafe\Controls\SessionManager;
+
 class LoginDocument extends PublicDocument {
 
     public function __construct() {

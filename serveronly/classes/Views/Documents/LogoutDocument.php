@@ -1,5 +1,11 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\Documents\MemberDocument;
+use WalkSafe\Views\Elements\TextElement;
+use WalkSafe\Controls\SessionManager;
+
 class LogoutDocument extends MemberDocument {
 
     public function __construct() {

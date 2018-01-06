@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\Elements\Element;
+
 class IconElement extends Element {
 
     /**

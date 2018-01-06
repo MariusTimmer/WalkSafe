@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkSafe\Controls;
+
 class DatabaseManager {
 
     protected static $manager;

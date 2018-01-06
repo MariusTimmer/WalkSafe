@@ -1,5 +1,9 @@
 <?php
 
+namespace WalkSafe\Views\Elements;
+
+use WalkSafe\Views\Elements\InputElement;
+
 class ButtonElement extends InputElement {
 
     public function __construct($type, $name, $value = '', $onclick = '') {

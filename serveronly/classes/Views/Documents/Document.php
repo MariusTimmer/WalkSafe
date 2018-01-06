@@ -1,5 +1,13 @@
 <?php
 
+namespace WalkSafe\Views\Documents;
+
+use WalkSafe\Views\IPrintable;
+use WalkSafe\ServerConfiguration;
+use WalkSafe\Controls\SessionManager;
+use WalkSafe\Views\Elements\MainMenuElement;
+use WalkSafe\Views\Documents\ErrorDocument;
+
 abstract class Document implements IPrintable {
 
     const TEXTDOMAIN = 'escort';

@@ -1,5 +1,5 @@
 <?php
 
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'ServerConnector.php');
-$document = new ImpressumDocument();
+$document = new \WalkSafe\Views\Documents\ImpressumDocument();
 print $document;
