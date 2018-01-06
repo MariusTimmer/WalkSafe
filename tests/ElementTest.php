@@ -1,8 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use WalkSafe\Views\Elements\TextElement;
 
-final class ElementTest extends PHPUnit_Framework_TestCase {
+final class ElementTest extends TestCase {
 
     public function testCanPrintTextElement() {
         $text = 'FooBar';
