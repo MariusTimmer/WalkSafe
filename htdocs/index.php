@@ -1,6 +1,6 @@
 <?php
 
-require_once('/srv/escort/autoload.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'ServerConnector.php');
 if (SessionManager::isLoggedIn()) {
     /**
      * The user is logged in in the current session so we will show
