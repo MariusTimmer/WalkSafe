@@ -4,13 +4,13 @@ namespace WalkSafe\Views\Documents;
 
 use WalkSafe\Views\IPrintable;
 use WalkSafe\ServerConfiguration;
+use WalkSafe\Controls\RequestProcessor;
 use WalkSafe\Controls\SessionManager;
 use WalkSafe\Views\Elements\MainMenuElement;
 use WalkSafe\Views\Documents\ErrorDocument;
 
 abstract class Document implements IPrintable {
 
-    const TEXTDOMAIN = 'escort';
     protected $subtitle;
     protected $javascripts;
     protected $stylesheets;
@@ -24,7 +24,7 @@ abstract class Document implements IPrintable {
 
     protected function __construct($subtitle, $mainmenu = NULL) {
         $this->serverconfiguration = new ServerConfiguration();
-        $this->initI18n();
+        RequestProcessor::init();
         $this->mainmenu = new MainMenuElement();
         if (SessionManager::isLoggedIn()) {
             /**
@@ -62,13 +62,6 @@ abstract class Document implements IPrintable {
         if ($this->allowedView()) {
             $this->setupHTML();
         }
-    }
-
-    static public function initI18n($locale = 'en') {
-        $localedir = SERVERONLY_ROOT . DIRECTORY_SEPARATOR . 'locale';
-        setlocale(LC_ALL, $locale);
-        bindtextdomain(self::TEXTDOMAIN, $localedir);
-        textdomain(self::TEXTDOMAIN);
     }
 
     protected function readInputData() {

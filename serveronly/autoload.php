@@ -40,10 +40,3 @@ $baseAutoloader = function($classname) {
     return true;
 };
 spl_autoload_register($baseAutoloader);
-
-/**
- * This has to be done before the first instance will be created:
- */
-$locale =  Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-$locale .= '_'. strtoupper($locale);
-WalkSafe\Views\Documents\Document::initI18n($locale .'.UTF-8');
