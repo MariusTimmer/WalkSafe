@@ -3,6 +3,7 @@
 namespace WalkSafe\Controls;
 
 use Locale;
+use WalkSafe\Input\ServerInput;
 
 /**
  * RequestProcessor
@@ -25,12 +26,17 @@ class RequestProcessor {
     }
 
     /**
-     * Reads out the language of the users browser and continues.
+     * Reads out the language of the users browser and continues if the
+     * sent request contains the HTTP_ACCEPT_LANGUAGE field to tell us which
+     * language is requested.
      */
     protected static function setupLocalization() {
-        $locale = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-        $locale .= '_'. strtoupper($locale);
-        self::initI18n($locale .'.UTF-8');
+        $HTTPAcceptLanguage = ServerInput::get('HTTP_ACCEPT_LANGUAGE');
+        if (!empty($HTTPAcceptLanguage)) {
+            $locale = Locale::acceptFromHttp($HTTPAcceptLanguage);
+            $locale .= '_'. strtoupper($locale);
+            self::initI18n($locale .'.UTF-8');
+        }
     }
 
     /**
