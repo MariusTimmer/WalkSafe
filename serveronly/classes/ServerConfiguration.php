@@ -19,6 +19,14 @@ class ServerConfiguration extends Configuration {
         parent::__construct(self::FILENAME);
     }
 
+    public static function exists() {
+        if (!file_exists(self::FILENAME)) {
+            return false;
+        }
+        $serverConfiguration = new ServerConfiguration(self::FILENAME);
+        return !empty($serverConfiguration->getTitle());
+    }
+
     public function getTitle() {
         return $this->getValue(self::KEY_TITLE);
     }
