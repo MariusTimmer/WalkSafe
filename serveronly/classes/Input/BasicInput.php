@@ -42,7 +42,10 @@ abstract class BasicInput {
      */
     public static function get(string $key) {
         static::provideData();
-        return filter_var(static::$data[$key], FILTER_SANITIZE_STRING);
+        if (isset(static::$data[$key])) {
+            return filter_var(static::$data[$key], FILTER_SANITIZE_STRING);
+        }
+        return null;
     }
 
 }
