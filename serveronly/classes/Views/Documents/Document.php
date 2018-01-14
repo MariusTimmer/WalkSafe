@@ -4,7 +4,6 @@ namespace WalkSafe\Views\Documents;
 
 use WalkSafe\Views\IPrintable;
 use WalkSafe\Configuration;
-use WalkSafe\Controls\RequestProcessor;
 use WalkSafe\Controls\SessionManager;
 use WalkSafe\Views\Elements\MainMenuElement;
 use WalkSafe\Views\Documents\ErrorDocument;
@@ -22,7 +21,6 @@ abstract class Document implements IPrintable {
     protected $mainmenu;
 
     protected function __construct($subtitle, $mainmenu = NULL) {
-        RequestProcessor::init();
         $this->mainmenu = new MainMenuElement();
         if (SessionManager::isLoggedIn()) {
             /**

@@ -40,3 +40,9 @@ $baseAutoloader = function($classname) {
     return true;
 };
 spl_autoload_register($baseAutoloader);
+
+/**
+ * This is a bit dirty, but the request processor should always be available at
+ * first because it is (for example) required to provide correct translations.
+ */
+WalkSafe\Controls\RequestProcessor::init();
