@@ -8,5 +8,8 @@
         <testsuite name="Inputs">
             <file>tests/InputTest.php</file>
         </testsuite>
+        <testsuite name="Configuration">
+            <file>tests/ConfigurationTest.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>
