@@ -4,6 +4,7 @@ namespace WalkSafe\Views\Documents;
 
 use WalkSafe\Views\Documents\PublicDocument;
 use WalkSafe\Views\Elements\TextElement;
+use WalkSafe\Configuration;
 
 class ImpressumDocument extends PublicDocument {
 
@@ -13,16 +14,19 @@ class ImpressumDocument extends PublicDocument {
 
     protected function setupHTML() {
         $this->addContent(new TextElement(
-            sprintf(gettext("MESSAGE_RESPONSIBLE"), htmlentities($this->serverconfiguration->getResponsible())),
+            sprintf(
+                gettext("MESSAGE_RESPONSIBLE"),
+                Configuration::get('RESPONSIBLE', 'GENERAL')
+            ),
             gettext("SUBTITLE_RESPONSIBLE")
         ));
         $content = sprintf(
             gettext('%s<br />%s<br />%s<br /><a href="mailto:%s">%s</a>'),
-            htmlentities($this->serverconfiguration->getImpressumPersonname()),
-            htmlentities($this->serverconfiguration->getImpressumStreet()),
-            htmlentities($this->serverconfiguration->getImpressumCity()),
-            htmlentities($this->serverconfiguration->getImpressumEmail()),
-            htmlentities($this->serverconfiguration->getImpressumEmail())
+            htmlentities(Configuration::get('PERSON', 'IMPRESSUM')),
+            htmlentities(Configuration::get('STREET', 'IMPRESSUM')),
+            htmlentities(Configuration::get('CITY', 'IMPRESSUM')),
+            htmlentities(Configuration::get('EMAIL', 'IMPRESSUM')),
+            htmlentities(Configuration::get('EMAIL', 'IMPRESSUM'))
         );
         $this->addContent(new TextElement(
             $content,

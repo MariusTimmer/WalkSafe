@@ -3,7 +3,7 @@
 namespace WalkSafe\Views\Documents;
 
 use WalkSafe\Views\IPrintable;
-use WalkSafe\ServerConfiguration;
+use WalkSafe\Configuration;
 use WalkSafe\Controls\RequestProcessor;
 use WalkSafe\Controls\SessionManager;
 use WalkSafe\Views\Elements\MainMenuElement;
@@ -15,7 +15,6 @@ abstract class Document implements IPrintable {
     protected $javascripts;
     protected $stylesheets;
     protected $contentelements;
-    protected $serverconfiguration;
 
     /**
      * @var MainMenuElement $mainmenu The main menu
@@ -23,7 +22,6 @@ abstract class Document implements IPrintable {
     protected $mainmenu;
 
     protected function __construct($subtitle, $mainmenu = NULL) {
-        $this->serverconfiguration = new ServerConfiguration();
         RequestProcessor::init();
         $this->mainmenu = new MainMenuElement();
         if (SessionManager::isLoggedIn()) {
@@ -122,7 +120,7 @@ abstract class Document implements IPrintable {
             $errordocument = new ErrorDocument($title, $message);
             return $errordocument->__toString();
         }
-        $title = htmlentities($this->serverconfiguration->getTitle());
+        $title = htmlentities(Configuration::get('TITLE', 'GENERAL'));
         $html  = '<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8" />';
         $html .= '<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no" />';
         $html .= '<title>'. htmlentities($this->subtitle) .' - '. $title .'</title>';
@@ -144,7 +142,7 @@ abstract class Document implements IPrintable {
             $html .= '</div></div>';
         }
         $html .= '</div>';
-        $html .= '<footer class="w3-container w3-bottom w3-theme w3-margin-top">&copy; '. $this->serverconfiguration->getCopyright() .'</footer>';
+        $html .= '<footer class="w3-container w3-bottom w3-theme w3-margin-top">&copy; '. Configuration::get('COPYRIGHT', 'GENERAL') .'</footer>';
         $html .= '</body></html>';
         return $html;
     }

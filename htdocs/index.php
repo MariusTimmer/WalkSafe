@@ -1,7 +1,7 @@
 <?php
 
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'ServerConnector.php');
-if (!\WalkSafe\ServerConfiguration::exists()) {
+if (!\WalkSafe\Configuration::exists()) {
     /**
      * There is no server configuration set. In this case we can assume that
      * the system is not set up yet and therefore the installation formular

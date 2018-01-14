@@ -2,6 +2,8 @@
 
 namespace WalkSafe;
 
+use WalkSafe\Configuration;
+
 class VerifyMail extends EMail {
 
     protected $email;
@@ -21,7 +23,7 @@ class VerifyMail extends EMail {
             gettext("MAIL_VERIFY_BODY"),
             sprintf(
                 'https://%s/escort/verify.php?hash=%s',
-                $this->serverconfiguration->getFQDN(),
+                Configuration::get('FQDN', 'GENERAL'),
                 $this->hash
             ),
             '',

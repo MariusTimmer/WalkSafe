@@ -2,21 +2,19 @@
 
 namespace WalkSafe;
 
-use WalkSafe\ServerConfiguration;
+use WalkSafe\Configuration;
 
 abstract class EMail {
 
     protected $from;
     protected $to;
-    protected $serverconfiguration;
 
     public function __construct($to) {
-        $this->serverconfiguration = new ServerConfiguration();
         $this->to = $to;
         $this->from = sprintf(
             '%s <%s>',
-            $this->serverconfiguration->getTitle(),
-            $this->serverconfiguration->getSystemAddress()
+            Configuration::get('TITLE', 'GENERAL'),
+            Configuration::get('SYSTEMADDRESS', 'GENERAL')
         );
     }
 

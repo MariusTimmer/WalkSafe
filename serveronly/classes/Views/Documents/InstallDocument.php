@@ -2,7 +2,7 @@
 
 namespace WalkSafe\Views\Documents;
 
-use WalkSafe\ServerConfiguration;
+use WalkSafe\Configuration;
 use WalkSafe\Input\PostInput;
 use WalkSafe\Views\Documents\PublicDocument;
 use WalkSafe\Views\Elements\SubmitElement;
@@ -37,7 +37,7 @@ class InstallDocument extends PublicDocument {
                 gettext("We have noticed that your system is not configured yet. Now we reached the point you need to configure it. Just fill out the following formular and confirm your input data clicking the submit button. To revert or change your configuration you can edit the \"%s\" file at any time."),
                 sprintf(
                     '<code>%s</code>',
-                    ServerConfiguration::FILENAME
+                    Configuration::CONFIGURATIONFILE
                 )
             )
         );

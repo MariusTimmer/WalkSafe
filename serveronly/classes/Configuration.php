@@ -2,55 +2,71 @@
 
 namespace WalkSafe;
 
-abstract class Configuration {
+class Configuration {
 
-    private $filename;
-    private $data;
+    const CONFIGURATIONFILE = SERVERONLY_ROOT . DIRECTORY_SEPARATOR .'server.ini';
+    private static $data = null;
 
     /**
-     * Creates a new instance of a configuration.
-     * @param string $filename Name of the configurationfile to use
+     * Reads in the configuration file.
+     * @throws Exception
      */
-    public function __construct($filename) {
-        $this->filename = $filename;
-        $this->read();
+    private static function read() {
+        if (!is_readable(self::CONFIGURATIONFILE)) {
+            throw Exception("Configuration file not found");
+        }
+        self::$data = parse_ini_file(self::CONFIGURATIONFILE, true, INI_SCANNER_TYPED);
+        if (self::$data === false) {
+            throw new Exception("Could not read configuration file");
+        }
     }
 
-    private function read() {
-        if ((!file_exists($this->filename)) ||
-            (!is_readable($this->filename))) {
-            /**
-             * The file is not available or not readable. This is an error.
-             */
+    /**
+     * Returns a value from the configuration file. Values can be fetched using
+     * a key and section separated or connecting them using a :: as a key.
+     * @param string $key
+     * @param string $section
+     * @return string|null
+     */
+    public static function get(string $key, string $section = null) {
+        if (!is_null($section)) {
+            $key = $section .'::'. $key;
+        }
+        if (is_null(self::$data)) {
+            self::read();
+        }
+        if (strpos($key, '::') === false) {
+            return self::$data[$key];
+        } else {
+            $path = explode('::', $key);
+            if ((isset(self::$data[$path[0]])) &&
+                (isset(self::$data[$path[0]][$path[1]]))) {
+                return self::$data[$path[0]][$path[1]];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Determinates weather the configuration file exists and is filled.
+     * @return bool
+     */
+    public static function exists(): bool {
+        if (!file_exists(self::CONFIGURATIONFILE)) {
             return false;
         }
-        $json = json_decode(trim(file_get_contents($this->filename)), true);
-        if (!$json) {
-            /**
-             * Could not read the files content or parse it to a json object.
-             */
+        try {
+            return (
+                !empty(
+                    self::get(
+                        'TITLE',
+                        'GENERAL'
+                    )
+                )
+            );
+        } catch (Exception $exception) {
             return false;
         }
-        foreach ($json AS $key => $value) {
-            $this->data[strtoupper($key)] = $value;
-        }
-    }
-
-    /**
-     * Returns a requested value from the configuration file by its key.
-     * @param string $key Key of the value
-     * @return string Value from the configuration
-     */
-    protected function getValue($key) {
-        return $this->data[strtoupper($key)];
-    }
-
-    /**
-     * Returns the name of the currently used file.
-     * @return string Name of the configuration file
-     */
-    public function getFilename() {
-        return $this->filename;
     }
 
 }
