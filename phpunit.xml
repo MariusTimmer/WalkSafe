@@ -1,12 +1,17 @@
 <phpunit
     bootstrap="serveronly/autoload.php"
-    verbose="false">
+    colors="true"
+    strict="true"
+    verbose="true">
     <testsuites>
         <testsuite name="Elements">
             <file>tests/ElementTest.php</file>
         </testsuite>
         <testsuite name="Inputs">
             <file>tests/InputTest.php</file>
+        </testsuite>
+        <testsuite name="Configuration">
+            <file>tests/ConfigurationTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
