@@ -12,28 +12,11 @@ namespace WalkSafe\Input;
 abstract class BasicInput {
 
     /**
-     * The static stored data pool.
-     * @var array $data
-     */
-    protected static $data;
-
-    /**
-     * This method will be implemented in the extending classes to set the
+     * This method will be implemented in the extending classes to give the
      * data pool to use (e.g. $_POST, $_GET, ...).
      * @return array Data pool to use
      */
     abstract protected static function getData(): array;
-
-    /**
-     * Will be called internally and make sure the data from the getData()
-     * method is set if there is no data set yet. It is like a simple
-     * static constructor.
-     */
-    protected static function provideData() {
-        if (!static::$data) {
-            static::$data = static::getData();
-        }
-    }
 
     /**
      * Reads out the requested data and returns it.
@@ -41,9 +24,9 @@ abstract class BasicInput {
      * @return mixed The requested data from the data pool
      */
     public static function get(string $key) {
-        static::provideData();
-        if (isset(static::$data[$key])) {
-            return filter_var(static::$data[$key], FILTER_SANITIZE_STRING);
+        $data = static::getData();
+        if (isset($data[$key])) {
+            return filter_var($data[$key], FILTER_SANITIZE_STRING);
         }
         return null;
     }
