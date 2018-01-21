@@ -1,9 +1,11 @@
 input[type=text],
 input[type=password],
-textarea {
+textarea,
+select {
     width: 100%;
     border: none;
     border-bottom: 1px solid gray;
+    background-color: #DEE;
 }
 input[type=submit] {
     margin-top: 1em;
@@ -12,21 +14,25 @@ p {
     text-align: justify;
 }
 label {
-  float: left;
-  width: 45%;
+    float: left;
+    width: 45%;
+    color: #333;
 }
 label.right {
     text-align: right;
     padding-right: .5em;
 }
 span.value {
-  color: gray;
+    color: gray;
 }
 a label {
     float: none;
 }
 #mainmenu_links a * {
     cursor: pointer;
+}
+fieldset {
+    margin: 1em 0em 1em 0em;
 }
 fieldset ul {
     list-style-type: none;

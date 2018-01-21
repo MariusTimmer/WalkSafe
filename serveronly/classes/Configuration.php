@@ -44,7 +44,7 @@ class Configuration {
         fprintf(
             $fh,
             "; Server configuration\n; Automatic generated configuration file\n; %s\n\n",
-            date('y-m-d h:i:s')
+            date('Y-m-d H:i:s')
         );
         foreach (self::$data AS $section => $sectionData) {
             fprintf($fh, "\n[%s]\n", $section);
