@@ -2,6 +2,8 @@
 
 namespace WalkSafe;
 
+use Exception;
+
 class Configuration {
 
     const CONFIGURATIONFILE = SERVERONLY_ROOT . DIRECTORY_SEPARATOR .'server.ini';
@@ -9,16 +11,19 @@ class Configuration {
 
     /**
      * Reads in the configuration file.
-     * @throws Exception
+     * @return bool True on success or false
      */
-    private static function read() {
+    private static function read(): bool {
         if (!is_readable(self::CONFIGURATIONFILE)) {
-            throw Exception("Configuration file not found");
+            trigger_error("Configuration file not found");
+            return false;
         }
         self::$data = parse_ini_file(self::CONFIGURATIONFILE, true, INI_SCANNER_TYPED);
         if (self::$data === false) {
-            throw new Exception("Could not read configuration file");
+            trigger_error("Could not read configuration file");
+            return false;
         }
+        return true;
     }
 
     /**
