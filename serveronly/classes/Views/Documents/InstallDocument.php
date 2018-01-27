@@ -5,6 +5,7 @@ namespace WalkSafe\Views\Documents;
 use WalkSafe\Configuration;
 use WalkSafe\Input\PostInput;
 use WalkSafe\Views\Documents\PublicDocument;
+use WalkSafe\Views\Elements\ErrorMessageElement;
 use WalkSafe\Views\Elements\SelectElement;
 use WalkSafe\Views\Elements\SubmitElement;
 use WalkSafe\Views\Elements\FormElement;
@@ -76,7 +77,7 @@ class InstallDocument extends PublicDocument {
                  * message.
                  */
                 $this->addContent(
-                    new TextElement(
+                    new ErrorMessageElement(
                         gettext("Could not validate the given data successfully"),
                         gettext("Error")
                     )
@@ -91,7 +92,7 @@ class InstallDocument extends PublicDocument {
                  * of serious error.
                  */
                 $this->addContent(
-                    new TextElement(
+                    new ErrorMessageElement(
                         gettext("Could not write the new configuration file"),
                         gettext("Error")
                     )
@@ -147,6 +148,19 @@ class InstallDocument extends PublicDocument {
                 return false;
             }
         }
+        if (strpos(PostInput::get(self::KEY_SYSADDRESS), '@') === false) {
+            /**
+             * System address does not contain a at character which should
+             * be contained within a valid system address.
+             */
+            $this->addContent(
+                new ErrorMessageElement(
+                    gettext("The system address seems to be invalid"),
+                    gettext("Invalid data")
+                )
+            );
+            return false;
+        }
         $dbtype = PostInput::get(self::KEY_DATABASE_TYPE);
         if (($dbtype !== self::DATABASE_TYPE_MYSQL) &&
             ($dbtype !== self::DATABASE_TYPE_POSTGRES)) {
@@ -155,6 +169,12 @@ class InstallDocument extends PublicDocument {
              * the values of the selectbox or something else). We do not accept
              * other values for database types.
              */
+            $this->addContent(
+                new ErrorMessageElement(
+                    gettext("The selected database type is invalid and must not be used"),
+                    gettext("Invalid data")
+                )
+            );
             return false;
         }
         return true;
