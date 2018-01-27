@@ -5,10 +5,12 @@
     verbose="true">
     <testsuites>
         <testsuite name="Elements">
-            <file>tests/ElementTest.php</file>
+            <file>tests/Views/Elements/ElementTest.php</file>
+            <file>tests/Views/Elements/ButtonElementTest.php</file>
+            <file>tests/Views/Elements/ErrorMessageElementTest.php</file>
         </testsuite>
         <testsuite name="Inputs">
-            <file>tests/InputTest.php</file>
+            <file>tests/Input/InputTest.php</file>
         </testsuite>
         <testsuite name="Configuration">
             <file>tests/ConfigurationTest.php</file>
