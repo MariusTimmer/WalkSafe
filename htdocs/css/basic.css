@@ -37,3 +37,9 @@ fieldset {
 fieldset ul {
     list-style-type: none;
 }
+.errormessage {
+    background: #FFEEEE;
+    border: 1px solid red;
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
