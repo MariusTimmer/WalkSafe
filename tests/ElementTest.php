@@ -17,7 +17,7 @@ final class ElementTest extends TestCase {
             'HTML is not empty'
         );
         $this->assertEquals(
-            '<p>'. $text .'</p>',
+            '<div><p>'. $text .'</p></div>',
             strval($textElement),
             'TextElement looks like expected'
         );
